@@ -1,12 +1,13 @@
 name = input("What is your name? ")
 age = input ("What is your age? ")
-print ("Your are  " + name + " and you are " + age + " years old." )
+# print ("Your are  " + name + " and you are " + age + " years old." )
+print (f"Your are {name} and you are {age} years old" )
 # What is the difference between the three snippets?
 # The difference between the three snippets is that the first snippet asks for the name and age separately and the second snippet asks for the name and age together. The third snippet asks for the name and age together and prints the name and age together.
 # Which one do you prefer and why?
 
 age = int(age) + 10 
-print ("In 10 years you will be " + str(age) + " years old." )
+# print ("In 10 years you will be " + str(age) + " years old." )
 # What is the output of the code?
 # The output is an error because you cannot add a string to an integer.
 # Why is this happening?
