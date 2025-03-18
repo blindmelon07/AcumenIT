@@ -16,7 +16,7 @@ t.forward(200)
 # Move to  vertical line
 t.penup()
 t.goto(0, 300)
-t.setheading(270)  #point down
+t.setheading(500)  #point down
 t.pendown()
 
 # Draw the vertical line of T
