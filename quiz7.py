@@ -2,7 +2,7 @@
 # import python.functions.pos
 from functions import pos
 from functions import auth
-
+import csv
 auth.login()
 pos.show_menu()
 

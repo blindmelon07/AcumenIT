@@ -22,7 +22,7 @@ def show_menu():
 def get_orders():
     orders = []
     while True:
-        fruit = input("Enter the fruit name (or 'cancel' to Cancel transaction): ").title()
+        fruit = input("Enter the fruit name (or 'cancel' to Cancel transaction): ").title().strip()
         if fruit.lower() == 'cancel':
             break
         if fruit in fruits:
