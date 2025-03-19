@@ -1,14 +1,41 @@
-import requests
+# ... existing imports ...import quiz10 as q10
+import csv
+import json
 
-TOKEN = "BQDa9E3VfYmlUBClo1IAKicVKS8YFKU0PY2rCkivR1QTfVVePDLl5waFkSEaarIxwwvluu5a7W0qAECAuTDcGpObF1cDICVg_P0sztPRCkdfDmPWIQd_BeLvSMFHI8Mw0b8ECXKC1vLaRq6XRySIdMIt_2SPuP5ngGqMqFN6DozoOYjhFjVtmodJjr7"
-def fetch_web_api(endpoint, method, body=None):
-    url = f'https://api.spotify.com/{endpoint}'
-    headers = {'Authorization': f'Bearer {TOKEN}'}
-    response = requests.request(method, url, headers=headers, json=body)
-    response.raise_for_status()
-    return response.json()
+from datetime import datetime
+import quiz10 as q10
 
-def get_top_tracks():
-    # Endpoint reference: https://developer.spotify.com/documentation/web-api/reference/get-users-top-artists-and-tracks
-    response = fetch_web_api('v1/me/top/tracks?time_range=long_term&limit=5', 'GET')
-    return response.get('items', [])
+
+q10.TOKEN
+def save_to_json(data, filename):
+    with open(filename, 'w') as f:
+        json.dump({"tracks": data}, f, indent=4)  # Wrap in dictionary for better structure
+
+def save_to_csv(data, filename):
+    with open(filename, 'w', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f)
+        writer.writerow(['Number', 'Track', 'Artists', 'Album', 'Duration (sec)', 'Popularity'])
+        for idx, track in enumerate(data, 1):
+            writer.writerow([
+                idx,
+                track['name'],
+                ', '.join(artist['name'] for artist in track['artists']),
+                track['album']['name'],
+                track['duration_ms'] // 1000,
+                track['popularity']
+            ])
+
+if __name__ == '__main__':
+    try:
+        top_tracks = q10.get_top_tracks()
+        
+        # Generate timestamp for unique filenames
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        base_name = f"top_tracks_{timestamp}"
+        
+        save_to_json(top_tracks, f'{base_name}.json')
+        save_to_csv(top_tracks, f'{base_name}.csv')
+        print(f"Data saved to {base_name}.json and {base_name}.csv")
+        
+    except Exception as err:  # Broaden exception catch
+        print(f"Error: {err}")

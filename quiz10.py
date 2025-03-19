@@ -5,8 +5,9 @@ import requests
 
 # Spotify API credentials - REPLACE WITH YOUR OWN
 #Ang TOKEN ay parang ID na nagpapatunay na ikaw ay may karapatang humingi ng datos
-TOKEN = 'BQDa9E3VfYmlUBClo1IAKicVKS8YFKU0PY2rCkivR1QTfVVePDLl5waFkSEaarIxwwvluu5a7W0qAECAuTDcGpObF1cDICVg_P0sztPRCkdfDmPWIQd_BeLvSMFHI8Mw0b8ECXKC1vLaRq6XRySIdMIt_2SPuP5ngGqMqFN6DozoOYjhFjVtmodJjr7-JHPryoMpp-Jy5z5gLFIffySCbibzOedGUwrk2u5UbtLSw-WvR1aAcFAEvQJjK3ii4fPRv1sDXwQvaeupQvfFH8SgHbwDFoyEjRaZeoImY5pB3IZqwcaRzzbcdmat'
+
 #Ang fetch_web_api ang gumagawa ng lahat ng komunikasyon sa Spotify servers
+TOKEN = 'BQDxm6qyk1YRXrm_A6VmROc8htJmxlsnmSayeaaKVj2ZOpwKcgpBaDXUqRM5-bce833firP6E_ybCD44MNNiGlWuY5xnYLI78H6xQ6MVCMCO0tAoCTo2HNrAkaUXBs_riF9EGRZo-MkzQ5SFU2HuMuvnfmiQrljnlY0ZSWPCwG3Sex3b7_4ydBgLWWhQ5eRDrbXjWRt6xR0jcftOa3l68M41tqQ_GnOr7mCSRBKq8MsA3Mhgm66Mc7mvgP2--hkgDL9-0HVLZ4MhkQovRWEQlvvqG8L_acc_N-QQZYXqGLtqJh0X2LdWfkTg';
 def fetch_web_api(endpoint, method, body=None):
     url = f'https://api.spotify.com/{endpoint}'
     headers = {'Authorization': f'Bearer {TOKEN}'}
