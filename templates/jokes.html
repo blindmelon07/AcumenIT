@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jokes Collection</title>
+</head>
+<body>
+    <h1>Jokes Database</h1>
+    {% if jokes %}
+    <ul>
+        {% for joke in jokes %}
+        <li>Joke #{{ joke['id'] }}: {{ joke['joke_text'] }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No jokes available</p>
+    {% endif %}
+</body>
+</html>
